@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hire &mdash; Charleston Artist</title>
+<meta name="description" content="How to contact and hire local Charleston, SC artists &mdash; painters, circus performers, dance companies, jazz musicians, and private-event entertainers.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#f3efe6;
+    --paper:#0d0b11;
+    --paper-deep:#17141d;
+    --indigo:#7c8bff;
+    --indigo-deep:#080a16;
+    --ochre:#ffc857;
+    --brick:#ff5c4d;
+    --teal:#35e0c8;
+    --violet:#d68cff;
+    --line: rgba(243,239,230,0.16);
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.55;
+  }
+
+  ::selection{background:var(--ochre); color:var(--indigo-deep);}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--indigo);
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px; height:1px;
+    background:var(--indigo);
+    display:inline-block;
+  }
+
+  h1,h2,h3,.display{font-family:var(--serif); font-weight:600; letter-spacing:-.01em;}
+
+  /* ---------- Nav ---------- */
+  .navbar{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:1rem 0;
+  }
+  .navbar-brand{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:1.35rem;
+    color:var(--ink) !important;
+  }
+  .navbar-brand span{color:var(--brick);}
+  .nav-link{
+    font-family:var(--mono);
+    font-size:.78rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink) !important;
+    margin-left:1.4rem;
+    opacity:.75;
+  }
+  .nav-link:hover{opacity:1; color:var(--indigo) !important;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:6.5rem 0 4.5rem;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 5rem);
+    line-height:.98;
+    margin-bottom:1.3rem;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--indigo);
+  }
+  .hero-lede{
+    max-width:36rem;
+    font-size:1.1rem;
+    color:rgba(243,239,230,.78);
+  }
+  .hero-tally{
+    font-family:var(--mono);
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--indigo);
+    border-top:1px solid var(--line);
+    margin-top:3rem;
+    padding-top:1.2rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:2.2rem;
+  }
+  .hero-tally b{
+    display:block;
+    font-family:var(--serif);
+    font-size:1.5rem;
+    color:var(--ink);
+    letter-spacing:0;
+  }
+
+  /* corner registration marks, gallery-checklist motif */
+  .reg-mark{
+    position:absolute;
+    width:34px; height:34px;
+    border:1px solid var(--indigo);
+    opacity:.35;
+  }
+  .reg-mark::before,.reg-mark::after{
+    content:"";
+    position:absolute;
+    background:var(--indigo);
+  }
+  .reg-mark::before{ top:50%; left:0; width:100%; height:1px; }
+  .reg-mark::after{ left:50%; top:0; height:100%; width:1px; }
+  .reg-tr{ top:2rem; right:2rem; }
+
+  /* ---------- Section shell ---------- */
+  .section{padding:4.5rem 0;}
+  .section + .section{border-top:1px solid var(--line);}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:1rem;
+    margin-bottom:2.6rem;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem,3.4vw,2.6rem);
+    margin:.5rem 0 0;
+  }
+  .section-note{
+    max-width:22rem;
+    font-size:.92rem;
+    color:rgba(243,239,230,.7);
+    text-align:right;
+  }
+
+  /* ---------- Placard cards ---------- */
+  .placard{
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .placard:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 34px -16px rgba(124,139,255,.35);
+    border-color:var(--indigo);
+  }
+  .placard-frame{
+    aspect-ratio:4/3;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    justify-content:flex-start;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .placard-photo{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:grayscale(35%) contrast(1.05) brightness(.85);
+  }
+  .placard-wash{
+    position:absolute;
+    inset:0;
+    mix-blend-mode:color;
+    opacity:.85;
+  }
+  .placard-frame::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(13,11,17,0) 40%, rgba(13,11,17,.75) 100%);
+  }
+  .placard-frame .mono-num{
+    position:absolute;
+    top:.7rem; left:.8rem;
+    font-family:var(--mono);
+    font-size:.68rem;
+    letter-spacing:.08em;
+    color:rgba(255,255,255,.85);
+    z-index:2;
+  }
+  .placard-frame .glyph{
+    position:relative;
+    z-index:2;
+    font-family:var(--serif);
+    font-size:1.8rem;
+    color:#fff;
+    font-weight:600;
+    padding:0 .9rem .55rem 0;
+    text-shadow:0 2px 10px rgba(0,0,0,.5);
+  }
+  .placard-body{
+    padding:1.15rem 1.25rem 1.35rem;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .placard-cat{
+    font-family:var(--mono);
+    font-size:.66rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--brick);
+    margin-bottom:.35rem;
+  }
+  .placard-name{
+    font-family:var(--serif);
+    font-size:1.28rem;
+    font-weight:600;
+    margin-bottom:.4rem;
+    line-height:1.15;
+  }
+  .placard-desc{
+    font-size:.88rem;
+    color:rgba(243,239,230,.75);
+    flex:1;
+    margin-bottom:.9rem;
+  }
+  .placard-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px dashed var(--line);
+    padding-top:.7rem;
+    font-family:var(--mono);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  .placard-foot a{
+    color:var(--indigo);
+    text-decoration:none;
+  }
+  .placard-foot a:hover{color:var(--brick);}
+  .placard-foot .medium{color:rgba(243,239,230,.5);}
+
+  /* frame color variants */
+  .fr-indigo{ background:linear-gradient(135deg,#4d5bff,#9fa8ff); }
+  .fr-ochre{ background:linear-gradient(135deg,#e08a1e,var(--ochre)); }
+  .fr-brick{ background:linear-gradient(135deg,#e0392a,#ff8a70); }
+  .fr-teal{ background:linear-gradient(135deg,#0fb8a0,var(--teal)); }
+  .fr-violet{ background:linear-gradient(135deg,#a24dff,var(--violet)); }
+  .fr-charcoal{ background:linear-gradient(135deg,#2a2733,#484257); }
+
+  /* ---------- Divider quote ---------- */
+  .quote-strip{
+    background:var(--indigo-deep);
+    color:var(--ink);
+    padding:3.4rem 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .quote-strip blockquote{
+    font-family:var(--serif);
+    font-size:clamp(1.4rem,3vw,2.1rem);
+    font-weight:450;
+    font-style:italic;
+    max-width:44rem;
+    line-height:1.3;
+  }
+  .quote-strip cite{
+    display:block;
+    margin-top:1.1rem;
+    font-family:var(--mono);
+    font-style:normal;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ochre);
+  }
+
+  /* ---------- Nightlife section variant ---------- */
+  .after-dark{
+    background:var(--indigo-deep);
+    color:var(--ink);
+  }
+  .after-dark .placard{
+    background:#151233;
+    border-color:rgba(239,234,224,.16);
+  }
+  .after-dark .placard-desc{color:rgba(239,234,224,.72);}
+  .after-dark .placard-foot{border-top-color:rgba(239,234,224,.2);}
+  .after-dark .placard-foot .medium{color:rgba(239,234,224,.45);}
+  .after-dark .section-note{color:rgba(239,234,224,.65);}
+  .after-dark .eyebrow{color:var(--ochre);}
+  .after-dark .eyebrow::before{background:var(--ochre);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:3rem 0 2.2rem;
+    border-top:1px solid var(--line);
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.05em;
+    color:rgba(243,239,230,.6);
+  }
+  footer a{color:var(--indigo);}
+
+  @media (max-width: 767px){
+    .section-note{text-align:left; max-width:none;}
+    .hero{padding:4rem 0 3rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Charleston<span>Artist</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" style="border-color:var(--line);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="nav">
+      <a class="nav-link" href="index.html#visual">Visual Artists</a>
+      <a class="nav-link" href="index.html#motion">Circus &amp; Dance</a>
+      <a class="nav-link" href="index.html#jazz">Jazz</a>
+      <a class="nav-link" href="learn.html">Learn</a>
+      <a class="nav-link" href="hire.html" style="opacity:1; color:var(--indigo) !important;">Hire</a>
+      <a class="nav-link" href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="reg-mark reg-tr d-none d-md-block"></div>
+  <div class="container">
+    <div class="eyebrow">Booking &amp; Commissions</div>
+    <h1 class="mt-3">Reaching out,<br class="d-none d-md-block"> the <em>right</em> way.</h1>
+    <p class="hero-lede">Every listing on this directory is reachable &mdash; but each discipline books differently. A gallery inquiry isn't a circus booking isn't a jazz combo for a wedding. This page walks through how to approach each one, and what to have ready before you send that first message.</p>
+
+    <div class="hero-tally">
+      <div><b>Direct</b>every listing links to its own site or venue</div>
+      <div><b>No Middleman</b>this directory doesn't broker bookings</div>
+      <div><b>Lead Time</b>most performers want 2&ndash;6 weeks notice</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= BEFORE YOU REACH OUT ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Process</div>
+        <h2>Before You Reach Out</h2>
+      </div>
+      <p class="section-note">Four things to have ready before the first message, regardless of discipline.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat" style="font-family:var(--mono); font-size:1.4rem; color:var(--indigo); margin-bottom:.6rem;">01</div>
+            <div class="placard-name" style="font-size:1.1rem;">Define the ask</div>
+            <p class="placard-desc">A commission, a performance, a class, or a piece for sale are four different conversations &mdash; know which one you're starting.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat" style="font-family:var(--mono); font-size:1.4rem; color:var(--ochre); margin-bottom:.6rem;">02</div>
+            <div class="placard-name" style="font-size:1.1rem;">Set date &amp; budget</div>
+            <p class="placard-desc">Have a real date (or date range) and a budget range in mind. Vague timing and "what's your rate?" with no number attached slows everything down.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat" style="font-family:var(--mono); font-size:1.4rem; color:var(--brick); margin-bottom:.6rem;">03</div>
+            <div class="placard-name" style="font-size:1.1rem;">Bring reference</div>
+            <p class="placard-desc">A photo, a piece you liked, a past event, or a specific act you saw. Specifics get a faster, more accurate reply than "surprise me."</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat" style="font-family:var(--mono); font-size:1.4rem; color:var(--teal); margin-bottom:.6rem;">04</div>
+            <div class="placard-name" style="font-size:1.1rem;">Use the listed channel</div>
+            <p class="placard-desc">Go through the site, contact form, or booking page linked on this directory rather than a personal social account &mdash; it's what gets checked first.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTE STRIP ================= -->
+<div class="quote-strip">
+  <div class="container">
+    <blockquote>"Specifics get a faster, more accurate reply than 'surprise me.'"
+      <cite>&mdash; Working principle of this page</cite>
+    </blockquote>
+  </div>
+</div>
+
+<!-- ================= HOW TO BOOK BY DISCIPLINE ================= -->
+<section class="section" id="how-to-book">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">By Discipline</div>
+        <h2>How Each Category Books</h2>
+      </div>
+      <p class="section-note">Full listings and links are on the main directory &mdash; this is what to expect from each.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat">On The Wall</div>
+            <div class="placard-name" style="font-size:1.2rem;">Visual Artists &amp; Galleries</div>
+            <p class="placard-desc">Redux Contemporary Art Center is the fastest way to reach multiple studio artists at once &mdash; contact the gallery directly to ask about a specific artist's availability for a commission, or catch an open-studio event to meet artists in person. Individual artists without a listed contact are best reached through the gallery that represents their studio.</p>
+            <div class="placard-foot"><span class="medium">Commissions &amp; sales</span><a href="index.html#visual">See listings &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat">In Motion</div>
+            <div class="placard-name" style="font-size:1.2rem;">Circus &amp; Aerial Performers</div>
+            <p class="placard-desc">Out on a Limb and Circus Building both take direct event bookings through their sites &mdash; have your venue's ceiling height and rig points ready if you want aerial work, since that determines what acts are even possible in the space.</p>
+            <div class="placard-foot"><span class="medium">Event bookings</span><a href="index.html#motion">See listings &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat">In Motion</div>
+            <div class="placard-name" style="font-size:1.2rem;">Dance Companies &amp; Instructors</div>
+            <p class="placard-desc">Companies like Unbound Ballet Project and Charleston Dance Project book for staged performances and collaborations; studios like Dance Conservatory of Charleston and Kelle Boggs Dance Studio book private lessons, workshops, or guest instruction &mdash; reach out to the one matching what you actually want.</p>
+            <div class="placard-foot"><span class="medium">Performances &amp; lessons</span><a href="learn.html#learn-dance">See listings &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat">Cradle Of Jazz</div>
+            <div class="placard-name" style="font-size:1.2rem;">Jazz Musicians &amp; Bands</div>
+            <p class="placard-desc">Charleston Jazz is the central hub for booking ensembles like the Charleston Jazz Orchestra for events; smaller acts like Franklin Street Five typically book directly. For a private-event combo, give load-in time, set length, and whether you need vocals.</p>
+            <div class="placard-foot"><span class="medium">Weddings &amp; events</span><a href="index.html#jazz">See listings &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat">Cradle Of Jazz</div>
+            <div class="placard-name" style="font-size:1.2rem;">Jazz &amp; Swing Dance Groups</div>
+            <p class="placard-desc">Roaring Twenties Hot Jazz Dance Club hosts social nights and can be reached for group lessons or a themed performance &mdash; useful for a party that wants the actual 1920s dance, not just the era's music.</p>
+            <div class="placard-foot"><span class="medium">Parties &amp; lessons</span><a href="index.html#jazz">See listings &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-cat">After Dark</div>
+            <div class="placard-name" style="font-size:1.2rem;">Private-Event Entertainment</div>
+            <p class="placard-desc">Michael At Your Place books directly for private parties and bachelorette events across the Lowcountry &mdash; contact them through their site with your date, headcount, and location to get availability and pricing.</p>
+            <div class="placard-foot"><span class="medium">Private parties</span><a href="index.html#afterdark">See listing &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT TO INCLUDE ================= -->
+<section class="section after-dark">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Checklist</div>
+        <h2>What To Include In Your First Message</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-name" style="font-size:1.05rem;">Date &amp; time</div>
+            <p class="placard-desc">Or a short date range if it's still flexible.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-name" style="font-size:1.05rem;">Venue &amp; headcount</div>
+            <p class="placard-desc">Indoor or outdoor, approximate space, expected guests.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-name" style="font-size:1.05rem;">Budget range</div>
+            <p class="placard-desc">A real number, even a wide one &mdash; it saves both sides a round trip.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="placard" style="min-height:100%;">
+          <div class="placard-body">
+            <div class="placard-name" style="font-size:1.05rem;">Style or reference</div>
+            <p class="placard-desc">A piece, act, or past event that shows the tone you're after.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="eyebrow">Where To Start</div>
+        <h2 class="mt-3 mb-3" style="font-size:clamp(1.7rem,3vw,2.3rem);">Find who you need on the wall.</h2>
+        <p style="max-width:36rem; color:rgba(243,239,230,.78);">The <a href="index.html" style="color:var(--indigo); text-decoration:none; border-bottom:1px dashed var(--indigo);">main directory</a> has the full list with links. If a listing is missing a contact link, or you're not sure who to reach for a specific request, see the <a href="about.html" style="color:var(--indigo); text-decoration:none; border-bottom:1px dashed var(--indigo);">About page</a> to get in touch directly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container d-flex flex-wrap justify-content-between gap-3">
+    <div>&copy; 2026 CharlestonArtist.com</div>
+    <div>An independent Charleston, SC arts directory</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
